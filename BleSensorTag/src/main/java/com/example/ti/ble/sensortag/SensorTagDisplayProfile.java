@@ -222,6 +222,8 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
        // }
         if (this.dataC != null) {
             if (c.equals(this.dataC)) {
+
+
                 //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
                 cRow.displayText.setText("" + getValueSafe(c));
             }
