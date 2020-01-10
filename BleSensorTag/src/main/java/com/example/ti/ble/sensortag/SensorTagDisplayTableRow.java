@@ -55,10 +55,16 @@ package com.example.ti.ble.sensortag;
 import android.content.Context;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Button;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+
 
 import com.example.ti.util.GenericCharacteristicTableRow;
 
@@ -67,11 +73,35 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
     EditText displayText;
     CheckBox displayInvert;
     CheckBox displayClock;
+    Button button;
+    TextView SystemIDLabel;
+    TextView ModelNRLabel;
 
     SensorTagDisplayTableRow(Context con) {
         super(con);
         this.title.setText("Display control");
+        this.SystemIDLabel = new TextView(con) {
+            {
+                setText("System ID: -");
+                setId(200);
+            }
+        };
+        this.ModelNRLabel = new TextView(con) {
+            {
+                setText("Model NR: -");
+                setId(201);
+            }
+        };
 
+        //button = (Button) findViewById(R.id.btn_confirm);
+
+        //this.button.setOnClickListener(new OnClickListener(){
+         // @Override
+         // public void onClick(View arg0) {
+
+          //  Log.d("Display","New Button listner");
+          //}
+        //});
         this.displayText = new EditText(con);
         this.displayText.setMaxLines(1);
         this.displayText.setInputType(InputType.TYPE_CLASS_TEXT);

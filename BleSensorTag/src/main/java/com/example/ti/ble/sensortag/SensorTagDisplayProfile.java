@@ -61,26 +61,42 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.CompoundButton;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.widget.Button;
 
+import com.example.ti.ble.btsig.profiles.DeviceInformationServiceTableRow;
 import com.example.ti.ble.common.BluetoothLeService;
 import com.example.ti.ble.common.GenericBluetoothProfile;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SensorTagDisplayProfile extends GenericBluetoothProfile {
-    public static final String TI_SENSORTAG_TWO_DISPLAY_SERVICE_UUID = "f000ad00-0451-4000-b000-000000000000";
-    public static final String TI_SENSORTAG_TWO_DISPLAY_DATA_UUID = "f000ad01-0451-4000-b000-000000000000";
-    public static final String TI_SENSORTAG_TWO_DISPLAY_CONTROL_UUID = "f000ad02-0451-4000-b000-000000000000";
+   // public static final String TI_SENSORTAG_TWO_DISPLAY_SERVICE_UUID = "f000ad00-0451-4000-b000-000000000000";
+   // public static final String TI_SENSORTAG_TWO_DISPLAY_DATA_UUID = "f000ad01-0451-4000-b000-000000000000";
+  //  public static final String TI_SENSORTAG_TWO_DISPLAY_CONTROL_UUID = "f000ad02-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_SERVICE_UUID = "f000aa64-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_DATA_UUID = "f000aa65-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_CONTROL_UUID = "f000aa66-0451-4000-b000-000000000000";
+
     SensorTagDisplayTableRow cRow;
     Timer displayClock;
-
+    Button button;
     public SensorTagDisplayProfile(Context con,BluetoothDevice device,BluetoothGattService service,BluetoothLeService controller) {
+
         super(con, device, service, controller);
         this.cRow = new SensorTagDisplayTableRow(con);
         this.tRow = this.cRow;
+
+
+        //super(con,device,service,controller);
+        //this.tRow =  new DeviceInformationServiceTableRow(con);
 
         List<BluetoothGattCharacteristic> characteristics = this.mBTService.getCharacteristics();
 
@@ -88,42 +104,14 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
             if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_DATA_UUID)) {
                 this.dataC = c;
             }
+
             if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_CONTROL_UUID)) {
                 this.configC = c;
             }
+            tRow.title.setText(c.toString());
+            tRow.sl1.setVisibility(View.INVISIBLE);
+            this.tRow.setIcon(this.getIconPrefix(), service.getUuid().toString());
         }
-        this.tRow.setIcon(this.getIconPrefix(), this.dataC.getUuid().toString());
-
-        this.cRow.displayClock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    if (displayClock != null) {
-                        displayClock.cancel();
-                    }
-                    displayClock = new Timer();
-                    displayClock.schedule(new clockTask(),1000,1000);
-                }
-                else {
-                    if (displayClock != null) {
-                        displayClock.cancel();
-                    }
-                }
-            }
-        });
-
-        this.cRow.displayInvert.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (configC != null) {
-                    byte b = 0x05;
-                    int error = mBTLeService.writeCharacteristic(configC, b);
-                    if (error != 0) {
-                        Log.d("SensorTagDisplayProfile", "Error writing config characteristic !");
-                    }
-                }
-            }
-        });
 
         this.cRow.displayText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -152,6 +140,14 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
             }
         });
 
+        this.cRow.displayText.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View arg0) {
+
+              Log.d("Display","OnClick listner");
+              //cRow.displayText.setText(dataC);
+          }
+        });
 
 
 
@@ -166,6 +162,12 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
 
     @Override
     public void enableService () {
+
+        this.mBTLeService.readCharacteristic(this.dataC);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+        this.mBTLeService.readCharacteristic(this.configC);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+
         if (this.cRow.displayClock.isChecked()) {
             if (displayClock != null) {
                 displayClock.cancel();
@@ -192,6 +194,41 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
     public void didUpdateValueForCharacteristic(BluetoothGattCharacteristic c) {
     }
 
+    private String getValueSafe(BluetoothGattCharacteristic c) {
+        byte b[] = c.getValue();
+        if (b == null) {
+            b = "N/A".getBytes(Charset.forName("UTF-8"));
+        }
+        try {
+            return new String(b, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+    @Override
+    public void didReadValueForCharacteristic(BluetoothGattCharacteristic c) {
+       // if (this.dataC != null) {
+         //   if (c.equals(this.dataC)) {
+           //     String s = "Data: ";
+            //    for (byte b : c.getValue()) {
+                   // s+= String.format("%02x:", b);
+              //      s+= String.format("%s", b);
+                    //s+= b;
+             //   }
+             //   cRow.displayText.setText(s);
+
+          //  }
+       // }
+        if (this.dataC != null) {
+            if (c.equals(this.dataC)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.displayText.setText("" + getValueSafe(c));
+            }
+        }
+
+
+    }
     private class clockTask extends TimerTask {
         @Override
         public void run() {

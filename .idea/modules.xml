@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BleSensorTag/BleSensorTag.iml" filepath="$PROJECT_DIR$/BleSensorTag/BleSensorTag.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GitHub-SensorTag-CC2650.iml" filepath="$PROJECT_DIR$/GitHub-SensorTag-CC2650.iml" />
       <module fileurl="file://$PROJECT_DIR$/SensorTag-CC2650.iml" filepath="$PROJECT_DIR$/SensorTag-CC2650.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BleSensorTag/SensorTag-CC2650-BleSensorTag.iml" filepath="$PROJECT_DIR$/BleSensorTag/SensorTag-CC2650-BleSensorTag.iml" />
     </modules>
   </component>
 </project>
