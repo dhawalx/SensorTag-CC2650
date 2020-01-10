@@ -71,8 +71,9 @@ import com.example.ti.util.GenericCharacteristicTableRow;
 public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
 
     EditText displayText;
-    CheckBox displayInvert;
-    CheckBox displayClock;
+    EditText displayText1;
+   // CheckBox displayInvert;
+    //CheckBox displayClock;
     Button button;
     TextView SystemIDLabel;
     TextView ModelNRLabel;
@@ -110,14 +111,22 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         int maxLength = 16;
         this.displayText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
-        this.displayInvert = new CheckBox(con);
+        this.displayText1 = new EditText(con);
+        this.displayText1.setMaxLines(1);
+        this.displayText1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.displayText1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.displayText1.setId(601);
+        //int maxLength = 16;
+        this.displayText1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+       /* this.displayInvert = new CheckBox(con);
         this.displayInvert.setText("Invert display");
         this.displayInvert.setId(601);
 
         this.displayClock = new CheckBox(con);
         this.displayClock.setText("Clock mode");
         this.displayClock.setId(602);
-
+*/
         RelativeLayout.LayoutParams displayTextLayout = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -127,30 +136,40 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         displayTextLayout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.displayText.setLayoutParams(displayTextLayout);
 
-        RelativeLayout.LayoutParams displayInvertLayout = new RelativeLayout.LayoutParams(
+        /* RelativeLayout.LayoutParams displayInvertLayout = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
         displayInvertLayout.setMargins(30, 10, 0, 30);
-        displayInvertLayout.addRule(RelativeLayout.BELOW, this.displayText.getId());
+        displayInvertLayout.addRule(RelativeLayout.BELOW, this.displayText1.getId());
         displayInvertLayout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.displayInvert.setLayoutParams(displayInvertLayout);
 
-        RelativeLayout.LayoutParams displayClockLayout = new RelativeLayout.LayoutParams(
+       RelativeLayout.LayoutParams displayClockLayout = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
         displayClockLayout.setMargins(30,10,0,30);
-        displayClockLayout.addRule(RelativeLayout.BELOW,this.displayText.getId());
+        displayClockLayout.addRule(RelativeLayout.BELOW,this.displayText1.getId());
         displayClockLayout.addRule(RelativeLayout.RIGHT_OF, displayInvert.getId());
         this.displayClock.setLayoutParams(displayClockLayout);
-
+*/
+        RelativeLayout.LayoutParams displayTextLayout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayTextLayout1.addRule(RelativeLayout.BELOW,
+                this.title.getId());
+        displayTextLayout1.setMargins(30, 10, 0, 80);
+        displayTextLayout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.displayText1.setLayoutParams(displayTextLayout1);
         /* Remove most of the normal controls */
 
         this.rowLayout.removeAllViews();
+        //this.rowLayout.addView(this.displayInvert);
+        //this.rowLayout.addView(this.displayClock);
         this.rowLayout.addView(this.title);
         this.rowLayout.addView(this.icon);
         this.rowLayout.addView(this.displayText);
-        this.rowLayout.addView(this.displayInvert);
-        this.rowLayout.addView(this.displayClock);
+        this.rowLayout.addView(this.displayText1);
+
     }
 
 }

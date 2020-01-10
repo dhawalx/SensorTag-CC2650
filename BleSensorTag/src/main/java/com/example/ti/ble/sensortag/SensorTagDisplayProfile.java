@@ -116,7 +116,6 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
         this.cRow.displayText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -136,21 +135,16 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
         this.cRow.displayText.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View arg0) {
-
               Log.d("Display","OnClick listner");
               //cRow.displayText.setText(dataC);
           }
         });
-
-
-
     }
 
     public static boolean isCorrectService(BluetoothGattService service) {
@@ -168,13 +162,13 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
         this.mBTLeService.readCharacteristic(this.configC);
         mBTLeService.waitIdle(GATT_TIMEOUT);
 
-        if (this.cRow.displayClock.isChecked()) {
+        /*if (this.cRow.displayClock.isChecked()) {
             if (displayClock != null) {
                 displayClock.cancel();
             }
             displayClock = new Timer();
             displayClock.schedule(new clockTask(),1000,1000);
-        }
+        }*/
     }
     @Override
     public void disableService () {
@@ -217,21 +211,18 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                     //s+= b;
              //   }
              //   cRow.displayText.setText(s);
-
           //  }
        // }
         if (this.dataC != null) {
             if (c.equals(this.dataC)) {
-
-
                 //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
-                cRow.displayText.setText("" + getValueSafe(c));
+                cRow.displayText1.setText("" + getValueSafe(c));
             }
         }
 
 
     }
-    private class clockTask extends TimerTask {
+    /*private class clockTask extends TimerTask {
         @Override
         public void run() {
             Date d = new Date();
@@ -245,7 +236,7 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        cRow.displayText.setText(date);
+                        cRow.displayText1.setText(date);
                     }
                 });
             }
@@ -256,6 +247,6 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
 }
