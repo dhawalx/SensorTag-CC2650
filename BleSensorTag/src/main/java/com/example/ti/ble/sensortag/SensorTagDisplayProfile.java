@@ -87,7 +87,7 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
 
     SensorTagDisplayTableRow cRow;
     Timer displayClock;
-    Button button;
+    //Button button;
     public SensorTagDisplayProfile(Context con,BluetoothDevice device,BluetoothGattService service,BluetoothLeService controller) {
 
         super(con, device, service, controller);
@@ -108,7 +108,7 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
             if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_CONTROL_UUID)) {
                 this.configC = c;
             }
-            tRow.title.setText(c.toString());
+            //tRow.title.setText(c.toString());
             tRow.sl1.setVisibility(View.INVISIBLE);
             this.tRow.setIcon(this.getIconPrefix(), service.getUuid().toString());
         }
@@ -132,7 +132,30 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                     }
                 }
             }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //66
+        this.cRow.display66Text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("SensorTagDisplayProfile", "New Display Text:" + s);
+                byte[] p = new byte[s.length()];
+                for (int ii = 0; ii < s.length(); ii++) {
+                    p[ii] = (byte) s.charAt(ii);
+                }
+                if (configC != null) {
+                    int error = mBTLeService.writeCharacteristic(configC, p);
+                    if (error != 0) {
+                        Log.d("SensorTagDisplayProfile", "Error writing configC !");
+                    }
+                }
+            }
             @Override
             public void afterTextChanged(Editable s) {
             }
@@ -142,9 +165,17 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
           @Override
           public void onClick(View arg0) {
               mBTLeService.readCharacteristic(dataC);
-              Log.d("Display","OnClick listner");
-              //cRow.displayText.setText(dataC);
+              Log.d("Display","OnClick-dataC");
+
           }
+        });
+        //66
+        this.cRow.display66Text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mBTLeService.readCharacteristic(configC);
+                Log.d("Display","OnClick-configC");
+            }
         });
     }
 
@@ -204,56 +235,31 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                 cRow.displayText1.setText("" + getValueSafe(c));
             }
         }
+        //66
+        if (this.configC != null) {
+            if (c.equals(this.configC)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display66Text1.setText("" + getValueSafe(c));
+            }
+        }
     }
 
 
     @Override
     public void didReadValueForCharacteristic(BluetoothGattCharacteristic c) {
-       // if (this.dataC != null) {
-         //   if (c.equals(this.dataC)) {
-           //     String s = "Data: ";
-            //    for (byte b : c.getValue()) {
-                   // s+= String.format("%02x:", b);
-              //      s+= String.format("%s", b);
-                    //s+= b;
-             //   }
-             //   cRow.displayText.setText(s);
-          //  }
-       // }
         if (this.dataC != null) {
             if (c.equals(this.dataC)) {
                 //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
                 cRow.displayText1.setText("" + getValueSafe(c));
             }
         }
-
-
-    }
-    /*private class clockTask extends TimerTask {
-        @Override
-        public void run() {
-            Date d = new Date();
-            final String date = String.format("%02d:%02d:%02d        ",d.getHours(),d.getMinutes(),d.getSeconds());
-            byte[] b = new byte[date.length()];
-            for (int ii = 0; ii < date.length(); ii++) {
-                b[ii] = (byte)date.charAt(ii);
-            }
-            if (dataC != null) {
-                Activity a = (Activity)context;
-                a.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        cRow.displayText1.setText(date);
-                    }
-                });
-            }
-            try {
-                Thread.sleep(1000);
-            }
-            catch (Exception e) {
-                e.printStackTrace();
+        //66
+        if (this.configC != null) {
+            if (c.equals(this.configC)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display66Text1.setText("" + getValueSafe(c));
             }
         }
-    }*/
 
+    }
 }
