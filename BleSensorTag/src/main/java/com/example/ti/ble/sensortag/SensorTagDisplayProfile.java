@@ -141,6 +141,7 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
         this.cRow.displayText.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View arg0) {
+              mBTLeService.readCharacteristic(dataC);
               Log.d("Display","OnClick listner");
               //cRow.displayText.setText(dataC);
           }
@@ -153,7 +154,18 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
         }
         else return false;
     }
-
+    private String getValueSafe(BluetoothGattCharacteristic c) {
+        byte b[] = c.getValue();
+        if (b == null) {
+            b = "N/A".getBytes(Charset.forName("UTF-8"));
+        }
+        try {
+            return new String(b, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
     @Override
     public void enableService () {
 
@@ -186,20 +198,15 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
     }
     @Override
     public void didUpdateValueForCharacteristic(BluetoothGattCharacteristic c) {
+        if (this.dataC != null) {
+            if (c.equals(this.dataC)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.displayText1.setText("" + getValueSafe(c));
+            }
+        }
     }
 
-    private String getValueSafe(BluetoothGattCharacteristic c) {
-        byte b[] = c.getValue();
-        if (b == null) {
-            b = "N/A".getBytes(Charset.forName("UTF-8"));
-        }
-        try {
-            return new String(b, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return "";
-        }
-    }
+
     @Override
     public void didReadValueForCharacteristic(BluetoothGattCharacteristic c) {
        // if (this.dataC != null) {
