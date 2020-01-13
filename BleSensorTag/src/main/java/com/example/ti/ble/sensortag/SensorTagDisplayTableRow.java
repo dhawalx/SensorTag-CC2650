@@ -75,21 +75,21 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
    // CheckBox displayInvert;
     //CheckBox displayClock;
     Button button;
-    TextView SystemIDLabel;
-    TextView ModelNRLabel;
+    TextView Senddata;
+    TextView Rxdata;
 
     SensorTagDisplayTableRow(Context con) {
         super(con);
         this.title.setText("Display control");
-        this.SystemIDLabel = new TextView(con) {
+        this.Senddata = new TextView(con) {
             {
-                setText("System ID: -");
+                setText("Send Data: -");
                 setId(200);
             }
         };
-        this.ModelNRLabel = new TextView(con) {
+        this.Rxdata = new TextView(con) {
             {
-                setText("Model NR: -");
+                setText("RX Data: -");
                 setId(201);
             }
         };
@@ -135,7 +135,7 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         //displayTextLayout.setMargins(70, 30, 30, 20);
         displayTextLayout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.displayText.setLayoutParams(displayTextLayout);
-
+        this.Senddata.setLayoutParams(displayTextLayout);
         /* RelativeLayout.LayoutParams displayInvertLayout = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -157,12 +157,17 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
         displayTextLayout1.addRule(RelativeLayout.BELOW,
                 this.title.getId());
-        displayTextLayout1.setMargins(0, 80, 0, 80);
+        displayTextLayout1.setMargins(0, 100, 0, 80);
         displayTextLayout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.displayText1.setLayoutParams(displayTextLayout1);
+        this.Rxdata.setLayoutParams(displayTextLayout1);
+
         /* Remove most of the normal controls */
 
         this.rowLayout.removeAllViews();
+        this.rowLayout.addView(this.Senddata);
+        this.rowLayout.addView(this.Rxdata);
+
         //this.rowLayout.addView(this.displayInvert);
         //this.rowLayout.addView(this.displayClock);
         this.rowLayout.addView(this.title);
