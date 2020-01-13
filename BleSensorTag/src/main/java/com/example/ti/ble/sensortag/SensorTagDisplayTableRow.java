@@ -72,11 +72,18 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
 
     EditText displayText;
     EditText displayText1;
-   // CheckBox displayInvert;
+
+    EditText display66Text;
+    EditText display66Text1;
+
+    // CheckBox displayInvert;
     //CheckBox displayClock;
     Button button;
     TextView Senddata;
     TextView Rxdata;
+    TextView TX66;
+    TextView RX66;
+
 
     SensorTagDisplayTableRow(Context con) {
         super(con);
@@ -93,16 +100,19 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
                 setId(201);
             }
         };
+        this.TX66 = new TextView(con) {
+            {
+                setText("TX66: -");
+                setId(202);
+            }
+        };
+        this.RX66 = new TextView(con) {
+            {
+                setText("RX66: -");
+                setId(203);
+            }
+        };
 
-        //button = (Button) findViewById(R.id.btn_confirm);
-
-        //this.button.setOnClickListener(new OnClickListener(){
-         // @Override
-         // public void onClick(View arg0) {
-
-          //  Log.d("Display","New Button listner");
-          //}
-        //});
         this.displayText = new EditText(con);
         this.displayText.setMaxLines(1);
         this.displayText.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -119,14 +129,24 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         //int maxLength = 16;
         this.displayText1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
-       /* this.displayInvert = new CheckBox(con);
-        this.displayInvert.setText("Invert display");
-        this.displayInvert.setId(601);
+       //TX66
+        this.display66Text = new EditText(con);
+        this.display66Text.setMaxLines(1);
+        this.display66Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display66Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display66Text.setId(602);
+        //int maxLength = 16;
+        this.display66Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
-        this.displayClock = new CheckBox(con);
-        this.displayClock.setText("Clock mode");
-        this.displayClock.setId(602);
-*/
+        this.display66Text1 = new EditText(con);
+        this.display66Text1.setMaxLines(1);
+        this.display66Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display66Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display66Text1.setId(603);
+        //int maxLength = 16;
+        this.display66Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+
         RelativeLayout.LayoutParams displayTextLayout = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -136,22 +156,7 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         displayTextLayout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.displayText.setLayoutParams(displayTextLayout);
         this.Senddata.setLayoutParams(displayTextLayout);
-        /* RelativeLayout.LayoutParams displayInvertLayout = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        displayInvertLayout.setMargins(30, 10, 0, 30);
-        displayInvertLayout.addRule(RelativeLayout.BELOW, this.displayText1.getId());
-        displayInvertLayout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
-        this.displayInvert.setLayoutParams(displayInvertLayout);
 
-       RelativeLayout.LayoutParams displayClockLayout = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        displayClockLayout.setMargins(30,10,0,30);
-        displayClockLayout.addRule(RelativeLayout.BELOW,this.displayText1.getId());
-        displayClockLayout.addRule(RelativeLayout.RIGHT_OF, displayInvert.getId());
-        this.displayClock.setLayoutParams(displayClockLayout);
-*/
         RelativeLayout.LayoutParams displayTextLayout1 = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -162,19 +167,42 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         this.displayText1.setLayoutParams(displayTextLayout1);
         this.Rxdata.setLayoutParams(displayTextLayout1);
 
+        //TX66
+
+        RelativeLayout.LayoutParams displayText66Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText66Layout.addRule(RelativeLayout.BELOW,
+                this.displayText1.getId());
+        //displayTextLayout.setMargins(70, 30, 30, 20);
+        displayText66Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display66Text.setLayoutParams(displayText66Layout);
+        this.TX66.setLayoutParams(displayText66Layout);
+
+        RelativeLayout.LayoutParams displayText66Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText66Layout1.addRule(RelativeLayout.BELOW,
+                this.display66Text.getId());
+        displayText66Layout1.setMargins(0, 100, 0, 80);
+        displayText66Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display66Text1.setLayoutParams(displayText66Layout1);
+        this.RX66.setLayoutParams(displayText66Layout1);
+
         /* Remove most of the normal controls */
 
         this.rowLayout.removeAllViews();
         this.rowLayout.addView(this.Senddata);
         this.rowLayout.addView(this.Rxdata);
-
-        //this.rowLayout.addView(this.displayInvert);
-        //this.rowLayout.addView(this.displayClock);
         this.rowLayout.addView(this.title);
         this.rowLayout.addView(this.icon);
         this.rowLayout.addView(this.displayText);
         this.rowLayout.addView(this.displayText1);
-
+        //66
+        this.rowLayout.addView(this.TX66);
+        this.rowLayout.addView(this.RX66);
+        this.rowLayout.addView(this.display66Text);
+        this.rowLayout.addView(this.display66Text1);
     }
 
 }
