@@ -76,6 +76,9 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
     EditText display66Text;
     EditText display66Text1;
 
+    EditText display67Text;
+    EditText display67Text1;
+
     // CheckBox displayInvert;
     //CheckBox displayClock;
     Button button;
@@ -83,6 +86,8 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
     TextView Rxdata;
     TextView TX66;
     TextView RX66;
+    TextView TX67;
+    TextView RX67;
 
 
     SensorTagDisplayTableRow(Context con) {
@@ -112,13 +117,25 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
                 setId(203);
             }
         };
+        this.TX67 = new TextView(con) {
+            {
+                setText("TX67: -");
+                setId(204);
+            }
+        };
+        this.RX67 = new TextView(con) {
+            {
+                setText("RX67: -");
+                setId(205);
+            }
+        };
 
         this.displayText = new EditText(con);
         this.displayText.setMaxLines(1);
         this.displayText.setInputType(InputType.TYPE_CLASS_TEXT);
         this.displayText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         this.displayText.setId(600);
-        int maxLength = 16;
+        int maxLength = 20;
         this.displayText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
         this.displayText1 = new EditText(con);
@@ -145,6 +162,23 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         this.display66Text1.setId(603);
         //int maxLength = 16;
         this.display66Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        //TX67
+        this.display67Text = new EditText(con);
+        this.display67Text.setMaxLines(1);
+        this.display67Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display67Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display67Text.setId(604);
+        //int maxLength = 16;
+        this.display67Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        this.display67Text1 = new EditText(con);
+        this.display67Text1.setMaxLines(1);
+        this.display67Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display67Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display67Text1.setId(605);
+        //int maxLength = 16;
+        this.display67Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
         //title TX65
         RelativeLayout.LayoutParams displayTextLayout0 = new RelativeLayout.LayoutParams(
@@ -213,6 +247,39 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         displayText66Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.display66Text1.setLayoutParams(displayText66Layout1);
 
+        //Title TX67--------------------------------------------------
+        RelativeLayout.LayoutParams displayText67Layout0 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText67Layout0.addRule(RelativeLayout.BELOW,
+                this.display66Text1.getId());
+        displayText67Layout0.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.TX67.setLayoutParams(displayText67Layout0);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText67Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText67Layout.addRule(RelativeLayout.BELOW,
+                this.TX67.getId());
+        displayText67Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display67Text.setLayoutParams(displayText67Layout);
+
+        //title RX66
+        RelativeLayout.LayoutParams displayText67Layout00 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText67Layout00.addRule(RelativeLayout.BELOW,
+                this.display67Text.getId());
+        displayText67Layout00.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.RX67.setLayoutParams(displayText67Layout00);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText67Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText67Layout1.addRule(RelativeLayout.BELOW,
+                this.display67Text.getId());
+        displayText67Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display67Text1.setLayoutParams(displayText67Layout1);
 
         /* Remove most of the normal controls */
 
@@ -228,6 +295,11 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         this.rowLayout.addView(this.RX66);
         this.rowLayout.addView(this.display66Text);
         this.rowLayout.addView(this.display66Text1);
+        //67
+        this.rowLayout.addView(this.TX67);
+        this.rowLayout.addView(this.RX67);
+        this.rowLayout.addView(this.display67Text);
+        this.rowLayout.addView(this.display67Text1);
     }
 
 }
