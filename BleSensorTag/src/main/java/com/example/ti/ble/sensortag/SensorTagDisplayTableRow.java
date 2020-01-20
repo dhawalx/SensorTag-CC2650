@@ -79,6 +79,24 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
     EditText display67Text;
     EditText display67Text1;
 
+    EditText display68Text;
+    EditText display68Text1;
+
+    EditText display69Text;
+    EditText display69Text1;
+
+    EditText display70Text;
+    EditText display70Text1;
+
+    EditText display71Text;
+    EditText display71Text1;
+
+    EditText display72Text;
+    EditText display72Text1;
+
+    EditText display73Text;
+    EditText display73Text1;
+
     // CheckBox displayInvert;
     //CheckBox displayClock;
     Button button;
@@ -88,7 +106,18 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
     TextView RX66;
     TextView TX67;
     TextView RX67;
-
+    TextView TX68;
+    TextView RX68;
+    TextView TX69;
+    TextView RX69;
+    TextView TX70;
+    TextView RX70;
+    TextView TX71;
+    TextView RX71;
+    TextView TX72;
+    TextView RX72;
+    TextView TX73;
+    TextView RX73;
 
     SensorTagDisplayTableRow(Context con) {
         super(con);
@@ -127,6 +156,78 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
             {
                 setText("RX67: -");
                 setId(205);
+            }
+        };
+        this.TX68 = new TextView(con) {
+            {
+                setText("TX68: -");
+                setId(206);
+            }
+        };
+        this.RX68 = new TextView(con) {
+            {
+                setText("RX68: -");
+                setId(207);
+            }
+        };
+        this.TX69 = new TextView(con) {
+            {
+                setText("TX69: -");
+                setId(208);
+            }
+        };
+        this.RX69 = new TextView(con) {
+            {
+                setText("RX69: -");
+                setId(209);
+            }
+        };
+        this.TX70 = new TextView(con) {
+            {
+                setText("TX70: -");
+                setId(210);
+            }
+        };
+        this.RX70 = new TextView(con) {
+            {
+                setText("RX70: -");
+                setId(211);
+            }
+        };
+        this.TX71 = new TextView(con) {
+            {
+                setText("TX71: -");
+                setId(212);
+            }
+        };
+        this.RX71 = new TextView(con) {
+            {
+                setText("RX71: -");
+                setId(213);
+            }
+        };
+        this.TX72 = new TextView(con) {
+            {
+                setText("TX72: -");
+                setId(214);
+            }
+        };
+        this.RX72 = new TextView(con) {
+            {
+                setText("RX72: -");
+                setId(215);
+            }
+        };
+        this.TX73 = new TextView(con) {
+            {
+                setText("TX73: -");
+                setId(216);
+            }
+        };
+        this.RX73 = new TextView(con) {
+            {
+                setText("RX73: -");
+                setId(217);
             }
         };
 
@@ -180,6 +281,109 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         //int maxLength = 16;
         this.display67Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
+        //TX68
+        this.display68Text = new EditText(con);
+        this.display68Text.setMaxLines(1);
+        this.display68Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display68Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display68Text.setId(606);
+        //int maxLength = 16;
+        this.display68Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        this.display68Text1 = new EditText(con);
+        this.display68Text1.setMaxLines(1);
+        this.display68Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display68Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display68Text1.setId(607);
+        //int maxLength = 16;
+        this.display68Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        //TX69
+        this.display69Text = new EditText(con);
+        this.display69Text.setMaxLines(1);
+        this.display69Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display69Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display69Text.setId(608);
+        //int maxLength = 16;
+        this.display69Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        this.display69Text1 = new EditText(con);
+        this.display69Text1.setMaxLines(1);
+        this.display69Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display69Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display69Text1.setId(609);
+        //int maxLength = 16;
+        this.display69Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        //TX70
+        this.display70Text = new EditText(con);
+        this.display70Text.setMaxLines(1);
+        this.display70Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display70Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display70Text.setId(610);
+        //int maxLength = 16;
+        this.display70Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        this.display70Text1 = new EditText(con);
+        this.display70Text1.setMaxLines(1);
+        this.display70Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display70Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display70Text1.setId(611);
+        //int maxLength = 16;
+        this.display70Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+
+        //TX71
+        this.display71Text = new EditText(con);
+        this.display71Text.setMaxLines(1);
+        this.display71Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display71Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display71Text.setId(612);
+        //int maxLength = 16;
+        this.display71Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        this.display71Text1 = new EditText(con);
+        this.display71Text1.setMaxLines(1);
+        this.display71Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display71Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display71Text1.setId(613);
+        //int maxLength = 16;
+        this.display71Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        //TX72
+        this.display72Text = new EditText(con);
+        this.display72Text.setMaxLines(1);
+        this.display72Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display72Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display72Text.setId(614);
+        //int maxLength = 16;
+        this.display72Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        this.display72Text1 = new EditText(con);
+        this.display72Text1.setMaxLines(1);
+        this.display72Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display72Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display72Text1.setId(615);
+        //int maxLength = 16;
+        this.display72Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        //TX73
+        this.display73Text = new EditText(con);
+        this.display73Text.setMaxLines(1);
+        this.display73Text.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display73Text.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display73Text.setId(616);
+        //int maxLength = 16;
+        this.display73Text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
+        this.display73Text1 = new EditText(con);
+        this.display73Text1.setMaxLines(1);
+        this.display73Text1.setInputType(InputType.TYPE_CLASS_TEXT);
+        this.display73Text1.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        this.display73Text1.setId(617);
+        //int maxLength = 16;
+        this.display73Text1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+
         //title TX65
         RelativeLayout.LayoutParams displayTextLayout0 = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
@@ -209,11 +413,11 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
         displayTextLayout1.addRule(RelativeLayout.BELOW,
-                this.Rxdata.getId());
+                this.displayText.getId());
         displayTextLayout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.displayText1.setLayoutParams(displayTextLayout1);
 
-        //Title TX66
+        //Title TX66=========================================================
         RelativeLayout.LayoutParams displayText66Layout0 = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -264,7 +468,7 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         displayText67Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.display67Text.setLayoutParams(displayText67Layout);
 
-        //title RX66
+        //title RX67
         RelativeLayout.LayoutParams displayText67Layout00 = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -280,6 +484,204 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
                 this.display67Text.getId());
         displayText67Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
         this.display67Text1.setLayoutParams(displayText67Layout1);
+        //Title TX68--------------------------------------------------
+        RelativeLayout.LayoutParams displayText68Layout0 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText68Layout0.addRule(RelativeLayout.BELOW,
+                this.display67Text1.getId());
+        displayText68Layout0.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.TX68.setLayoutParams(displayText68Layout0);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText68Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText68Layout.addRule(RelativeLayout.BELOW,
+                this.TX68.getId());
+        displayText68Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display68Text.setLayoutParams(displayText68Layout);
+
+        //title RX68
+        RelativeLayout.LayoutParams displayText68Layout00 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText68Layout00.addRule(RelativeLayout.BELOW,
+                this.display68Text.getId());
+        displayText68Layout00.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.RX68.setLayoutParams(displayText68Layout00);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText68Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText68Layout1.addRule(RelativeLayout.BELOW,
+                this.display68Text.getId());
+        displayText68Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display68Text1.setLayoutParams(displayText68Layout1);
+        //Title TX69--------------------------------------------------
+        RelativeLayout.LayoutParams displayText69Layout0 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText69Layout0.addRule(RelativeLayout.BELOW,
+                this.display68Text1.getId());
+        displayText69Layout0.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.TX69.setLayoutParams(displayText69Layout0);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText69Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText69Layout.addRule(RelativeLayout.BELOW,
+                this.TX69.getId());
+        displayText69Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display69Text.setLayoutParams(displayText69Layout);
+
+        //title RX69
+        RelativeLayout.LayoutParams displayText69Layout00 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText69Layout00.addRule(RelativeLayout.BELOW,
+                this.display69Text.getId());
+        displayText69Layout00.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.RX69.setLayoutParams(displayText69Layout00);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText69Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText69Layout1.addRule(RelativeLayout.BELOW,
+                this.display69Text.getId());
+        displayText69Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display69Text1.setLayoutParams(displayText69Layout1);
+        //Title TX70--------------------------------------------------
+        RelativeLayout.LayoutParams displayText70Layout0 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText70Layout0.addRule(RelativeLayout.BELOW,
+                this.display69Text1.getId());
+        displayText70Layout0.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.TX70.setLayoutParams(displayText70Layout0);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText70Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText70Layout.addRule(RelativeLayout.BELOW,
+                this.TX70.getId());
+        displayText70Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display70Text.setLayoutParams(displayText70Layout);
+
+        //title RX70
+        RelativeLayout.LayoutParams displayText70Layout00 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText70Layout00.addRule(RelativeLayout.BELOW,
+                this.display70Text.getId());
+        displayText70Layout00.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.RX70.setLayoutParams(displayText70Layout00);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText70Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText70Layout1.addRule(RelativeLayout.BELOW,
+                this.display70Text.getId());
+        displayText70Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display70Text1.setLayoutParams(displayText70Layout1);
+        //Title TX71--------------------------------------------------
+        RelativeLayout.LayoutParams displayText71Layout0 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText71Layout0.addRule(RelativeLayout.BELOW,
+                this.display70Text1.getId());
+        displayText71Layout0.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.TX71.setLayoutParams(displayText71Layout0);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText71Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText71Layout.addRule(RelativeLayout.BELOW,
+                this.TX71.getId());
+        displayText71Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display71Text.setLayoutParams(displayText71Layout);
+
+        //title RX71
+        RelativeLayout.LayoutParams displayText71Layout00 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText71Layout00.addRule(RelativeLayout.BELOW,
+                this.display71Text.getId());
+        displayText71Layout00.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.RX71.setLayoutParams(displayText71Layout00);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText71Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText71Layout1.addRule(RelativeLayout.BELOW,
+                this.display71Text.getId());
+        displayText71Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display71Text1.setLayoutParams(displayText71Layout1);
+        //Title TX72--------------------------------------------------
+        RelativeLayout.LayoutParams displayText72Layout0 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText72Layout0.addRule(RelativeLayout.BELOW,
+                this.display71Text1.getId());
+        displayText72Layout0.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.TX72.setLayoutParams(displayText72Layout0);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText72Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText72Layout.addRule(RelativeLayout.BELOW,
+                this.TX72.getId());
+        displayText72Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display72Text.setLayoutParams(displayText72Layout);
+
+        //title RX72
+        RelativeLayout.LayoutParams displayText72Layout00 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText72Layout00.addRule(RelativeLayout.BELOW,
+                this.display72Text.getId());
+        displayText72Layout00.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.RX72.setLayoutParams(displayText72Layout00);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText72Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText72Layout1.addRule(RelativeLayout.BELOW,
+                this.display72Text.getId());
+        displayText72Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display72Text1.setLayoutParams(displayText72Layout1);
+        //Title TX73--------------------------------------------------
+        RelativeLayout.LayoutParams displayText73Layout0 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText73Layout0.addRule(RelativeLayout.BELOW,
+                this.display72Text1.getId());
+        displayText73Layout0.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.TX73.setLayoutParams(displayText73Layout0);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText73Layout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText73Layout.addRule(RelativeLayout.BELOW,
+                this.TX73.getId());
+        displayText73Layout.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display73Text.setLayoutParams(displayText73Layout);
+
+        //title RX73
+        RelativeLayout.LayoutParams displayText73Layout00 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText73Layout00.addRule(RelativeLayout.BELOW,
+                this.display73Text.getId());
+        displayText73Layout00.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.RX73.setLayoutParams(displayText73Layout00);
+        //Edit Text
+        RelativeLayout.LayoutParams displayText73Layout1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayText73Layout1.addRule(RelativeLayout.BELOW,
+                this.display73Text.getId());
+        displayText73Layout1.addRule(RelativeLayout.RIGHT_OF, icon.getId());
+        this.display73Text1.setLayoutParams(displayText73Layout1);
 
         /* Remove most of the normal controls */
 
@@ -300,6 +702,35 @@ public class SensorTagDisplayTableRow extends GenericCharacteristicTableRow {
         this.rowLayout.addView(this.RX67);
         this.rowLayout.addView(this.display67Text);
         this.rowLayout.addView(this.display67Text1);
+        //68
+        this.rowLayout.addView(this.TX68);
+        this.rowLayout.addView(this.RX68);
+        this.rowLayout.addView(this.display68Text);
+        this.rowLayout.addView(this.display68Text1);
+        //69
+        this.rowLayout.addView(this.TX69);
+        this.rowLayout.addView(this.RX69);
+        this.rowLayout.addView(this.display69Text);
+        this.rowLayout.addView(this.display69Text1);
+        //70
+        this.rowLayout.addView(this.TX70);
+        this.rowLayout.addView(this.RX70);
+        this.rowLayout.addView(this.display70Text);
+        this.rowLayout.addView(this.display70Text1);
+        //71
+        this.rowLayout.addView(this.TX71);
+        this.rowLayout.addView(this.RX71);
+        this.rowLayout.addView(this.display71Text);
+        this.rowLayout.addView(this.display71Text1);
+        //72
+        this.rowLayout.addView(this.TX72);
+        this.rowLayout.addView(this.RX72);
+        this.rowLayout.addView(this.display72Text);
+        this.rowLayout.addView(this.display72Text1);
+        //73
+        this.rowLayout.addView(this.TX73);
+        this.rowLayout.addView(this.RX73);
+        this.rowLayout.addView(this.display73Text);
+        this.rowLayout.addView(this.display73Text1);
     }
-
 }

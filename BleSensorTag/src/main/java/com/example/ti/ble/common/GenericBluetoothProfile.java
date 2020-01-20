@@ -76,6 +76,13 @@ public class GenericBluetoothProfile {
 	protected BluetoothGattCharacteristic dataC;
 	protected BluetoothGattCharacteristic configC;
 	protected BluetoothGattCharacteristic sch3C;
+	protected BluetoothGattCharacteristic sch4C;
+	protected BluetoothGattCharacteristic sch5C;
+	protected BluetoothGattCharacteristic sch6C;
+	protected BluetoothGattCharacteristic sch7C;
+	protected BluetoothGattCharacteristic sch8C;
+	protected BluetoothGattCharacteristic sch9C;
+
 
 	protected BluetoothGattCharacteristic periodC;
 	protected static final int GATT_TIMEOUT = 250; // milliseconds

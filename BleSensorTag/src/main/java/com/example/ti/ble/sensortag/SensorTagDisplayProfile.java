@@ -85,6 +85,13 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
     public static final String TI_SENSORTAG_TWO_DISPLAY_DATA_UUID = "f000aa65-0451-4000-b000-000000000000";
     public static final String TI_SENSORTAG_TWO_DISPLAY_CONTROL_UUID = "f000aa66-0451-4000-b000-000000000000";
     public static final String TI_SENSORTAG_TWO_DISPLAY_SCH3_UUID = "f000aa67-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_SCH4_UUID = "f000aa68-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_SCH5_UUID = "f000aa69-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_SCH6_UUID = "f000aa70-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_SCH7_UUID = "f000aa71-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_SCH8_UUID = "f000aa72-0451-4000-b000-000000000000";
+    public static final String TI_SENSORTAG_TWO_DISPLAY_SCH9_UUID = "f000aa73-0451-4000-b000-000000000000";
+
 
     SensorTagDisplayTableRow cRow;
     Timer displayClock;
@@ -114,6 +121,31 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
             if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_SCH3_UUID)) {
                 this.sch3C = c;
             }
+            //68
+            if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_SCH4_UUID)) {
+                this.sch4C = c;
+            }
+            //69
+            if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_SCH5_UUID)) {
+                this.sch5C = c;
+            }
+            //70
+            if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_SCH6_UUID)) {
+                this.sch6C = c;
+            }
+            //71
+            if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_SCH7_UUID)) {
+                this.sch7C = c;
+            }
+            //72
+            if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_SCH8_UUID)) {
+                this.sch8C = c;
+            }
+            //73
+            if (c.getUuid().toString().equals(TI_SENSORTAG_TWO_DISPLAY_SCH9_UUID)) {
+                this.sch9C = c;
+            }
+
             //tRow.title.setText(c.toString());
             tRow.sl1.setVisibility(View.INVISIBLE);
             this.tRow.setIcon(this.getIconPrefix(), service.getUuid().toString());
@@ -190,6 +222,150 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
             public void afterTextChanged(Editable s) {
             }
         });
+        //68
+        this.cRow.display68Text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("SensorTagDisplayProfile", "New Display Text:" + s);
+                byte[] p = new byte[s.length()];
+                for (int ii = 0; ii < s.length(); ii++) {
+                    p[ii] = (byte) s.charAt(ii);
+                }
+                if (sch4C != null) {
+                    int error = mBTLeService.writeCharacteristic(sch4C, p);
+                    if (error != 0) {
+                        Log.d("SensorTagDisplayProfile", "Error writing sch3C !");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //69
+        this.cRow.display69Text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("SensorTagDisplayProfile", "New Display Text:" + s);
+                byte[] p = new byte[s.length()];
+                for (int ii = 0; ii < s.length(); ii++) {
+                    p[ii] = (byte) s.charAt(ii);
+                }
+                if (sch5C != null) {
+                    int error = mBTLeService.writeCharacteristic(sch5C, p);
+                    if (error != 0) {
+                        Log.d("SensorTagDisplayProfile", "Error writing sch3C !");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //70
+        this.cRow.display70Text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("SensorTagDisplayProfile", "New Display Text:" + s);
+                byte[] p = new byte[s.length()];
+                for (int ii = 0; ii < s.length(); ii++) {
+                    p[ii] = (byte) s.charAt(ii);
+                }
+                if (sch6C != null) {
+                    int error = mBTLeService.writeCharacteristic(sch6C, p);
+                    if (error != 0) {
+                        Log.d("SensorTagDisplayProfile", "Error writing sch3C !");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //71
+        this.cRow.display71Text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("SensorTagDisplayProfile", "New Display Text:" + s);
+                byte[] p = new byte[s.length()];
+                for (int ii = 0; ii < s.length(); ii++) {
+                    p[ii] = (byte) s.charAt(ii);
+                }
+                if (sch7C != null) {
+                    int error = mBTLeService.writeCharacteristic(sch7C, p);
+                    if (error != 0) {
+                        Log.d("SensorTagDisplayProfile", "Error writing sch3C !");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //72
+        this.cRow.display72Text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("SensorTagDisplayProfile", "New Display Text:" + s);
+                byte[] p = new byte[s.length()];
+                for (int ii = 0; ii < s.length(); ii++) {
+                    p[ii] = (byte) s.charAt(ii);
+                }
+                if (sch8C != null) {
+                    int error = mBTLeService.writeCharacteristic(sch8C, p);
+                    if (error != 0) {
+                        Log.d("SensorTagDisplayProfile", "Error writing sch3C !");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //73
+        this.cRow.display73Text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("SensorTagDisplayProfile", "New Display Text:" + s);
+                byte[] p = new byte[s.length()];
+                for (int ii = 0; ii < s.length(); ii++) {
+                    p[ii] = (byte) s.charAt(ii);
+                }
+                if (sch9C != null) {
+                    int error = mBTLeService.writeCharacteristic(sch9C, p);
+                    if (error != 0) {
+                        Log.d("SensorTagDisplayProfile", "Error writing sch3C !");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         //65
         this.cRow.displayText.setOnClickListener(new OnClickListener() {
@@ -216,6 +392,55 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                 Log.d("Display","OnClick-sch3C");
             }
         });
+        //68
+        this.cRow.display68Text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mBTLeService.readCharacteristic(sch4C);
+                Log.d("Display","OnClick-sch3C");
+            }
+        });
+        //69
+        this.cRow.display69Text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mBTLeService.readCharacteristic(sch5C);
+                Log.d("Display","OnClick-sch3C");
+            }
+        });
+        //70
+        this.cRow.display70Text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mBTLeService.readCharacteristic(sch6C);
+                Log.d("Display","OnClick-sch3C");
+            }
+        });
+        //71
+        this.cRow.display71Text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mBTLeService.readCharacteristic(sch7C);
+                Log.d("Display","OnClick-sch3C");
+            }
+        });
+        //72
+        this.cRow.display72Text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mBTLeService.readCharacteristic(sch8C);
+                Log.d("Display","OnClick-sch3C");
+            }
+        });
+        //73
+        this.cRow.display73Text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mBTLeService.readCharacteristic(sch9C);
+                Log.d("Display","OnClick-sch9C");
+            }
+        });
+
     }
 
     public static boolean isCorrectService(BluetoothGattService service) {
@@ -244,6 +469,18 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
         this.mBTLeService.readCharacteristic(this.configC);
         mBTLeService.waitIdle(GATT_TIMEOUT);
         this.mBTLeService.readCharacteristic(this.sch3C);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+        this.mBTLeService.readCharacteristic(this.sch4C);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+        this.mBTLeService.readCharacteristic(this.sch5C);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+        this.mBTLeService.readCharacteristic(this.sch6C);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+        this.mBTLeService.readCharacteristic(this.sch7C);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+        this.mBTLeService.readCharacteristic(this.sch8C);
+        mBTLeService.waitIdle(GATT_TIMEOUT);
+        this.mBTLeService.readCharacteristic(this.sch9C);
         mBTLeService.waitIdle(GATT_TIMEOUT);
 
         /*if (this.cRow.displayClock.isChecked()) {
@@ -291,6 +528,47 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                 cRow.display67Text1.setText("" + getValueSafe(c));
             }
         }
+        //68
+        if (this.sch4C != null) {
+            if (c.equals(this.sch4C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display68Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //69
+        if (this.sch5C != null) {
+            if (c.equals(this.sch5C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display69Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //70
+        if (this.sch6C != null) {
+            if (c.equals(this.sch6C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display70Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //71
+        if (this.sch7C != null) {
+            if (c.equals(this.sch7C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display71Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //72
+        if (this.sch8C != null) {
+            if (c.equals(this.sch8C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display72Text1.setText("" + getValueSafe(c));
+            }
+        } //73
+        if (this.sch9C != null) {
+            if (c.equals(this.sch9C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display73Text1.setText("" + getValueSafe(c));
+            }
+        }
     }
 
 
@@ -317,6 +595,47 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                 cRow.display67Text1.setText("" + getValueSafe(c));
             }
         }
-
+        //68
+        if (this.sch4C != null) {
+            if (c.equals(this.sch4C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display68Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //69
+        if (this.sch5C != null) {
+            if (c.equals(this.sch5C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display69Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //70
+        if (this.sch6C != null) {
+            if (c.equals(this.sch6C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display70Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //71
+        if (this.sch7C != null) {
+            if (c.equals(this.sch7C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display71Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //72
+        if (this.sch8C != null) {
+            if (c.equals(this.sch8C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display72Text1.setText("" + getValueSafe(c));
+            }
+        }
+        //73
+        if (this.sch9C != null) {
+            if (c.equals(this.sch9C)) {
+                //this.tRow.ModelNRLabel.setText("Model NR: " + getValueSafe(c));
+                cRow.display73Text1.setText("" + getValueSafe(c));
+            }
+        }
     }
 }
