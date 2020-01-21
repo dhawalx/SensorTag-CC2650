@@ -74,8 +74,12 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.lang.Object;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class SensorTagDisplayProfile extends GenericBluetoothProfile {
    // public static final String TI_SENSORTAG_TWO_DISPLAY_SERVICE_UUID = "f000ad00-0451-4000-b000-000000000000";
@@ -150,6 +154,8 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
             tRow.sl1.setVisibility(View.INVISIBLE);
             this.tRow.setIcon(this.getIconPrefix(), service.getUuid().toString());
         }
+
+
         //65
         this.cRow.displayText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -163,10 +169,22 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
                 for (int ii = 0; ii < s.length(); ii++) {
                     p[ii] = (byte) s.charAt(ii);
                 }
-                if (dataC != null) {
-                    int error = mBTLeService.writeCharacteristic(dataC, p);
-                    if (error != 0) {
-                        Log.d("SensorTagDisplayProfile", "Error writing data characteristic !");
+                //long testtime = getUTCinSeconds();
+                //testtime;
+                if(s.length()>=20)
+                {
+                    long testtime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+                    //byte[] result = new byte[4];
+                    p[19] = (byte) (testtime >> 24);
+                    p[18] = (byte) (testtime >> 16);
+                    p[17] = (byte) (testtime >> 8);
+                    p[16] = (byte) (testtime /*>> 0*/);
+                    //return result;
+                    if (dataC != null) {
+                        int error = mBTLeService.writeCharacteristic(dataC, p);
+                        if (error != 0) {
+                            Log.d("SensorTagDisplayProfile", "Error writing data characteristic !");
+                        }
                     }
                 }
             }
@@ -460,6 +478,19 @@ public class SensorTagDisplayProfile extends GenericBluetoothProfile {
             e.printStackTrace();
             return "";
         }
+    }
+    private long getUTCinSeconds()
+    {
+        Calendar cal1 = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        // cal1.set(2019, 1, 1);
+        // long millis1 = cal1.getTimeInMillis();
+
+        //Current date in milliseconds
+        long millis2 = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+        // Calculate difference in seconds
+        //long diff = millis2 - millis1;
+        return (long)(millis2 / 1000);
     }
     @Override
     public void enableService () {
